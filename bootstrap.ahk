@@ -5,8 +5,10 @@
 ; A list of all the folders to search:
 IncludeFolders = 
 (comments ltrim
+  %A_WorkingDir%\_Config
   %A_WorkingDir%\_Functions
 )
+
 ; @IncludeOrCombine:
 ; Determines the action to perform.
 ; INCLUDE: Uses "#Include" statements to create the master file.  Good for normal use and for frequently updated scripts.
