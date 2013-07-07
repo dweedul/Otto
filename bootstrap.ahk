@@ -7,6 +7,7 @@ IncludeFolders =
 (comments ltrim
   %A_WorkingDir%\_Config
   %A_WorkingDir%\_Functions
+  %A_WorkingDir%\global
 )
 
 ; @IncludeOrCombine:
