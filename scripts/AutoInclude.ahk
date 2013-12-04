@@ -214,6 +214,8 @@
 										;This file was automatically created from all the scripts found in the IncludeFolder
 										#SingleInstance Force
 										SetWorkingDir %mainWorkingDir%
+                    
+                    _BuildScript = %A_ScriptFullPath%
 
 										;The following Initialize functions were extracted from their corresponding #Include files:
 											%InitializeFunctions%

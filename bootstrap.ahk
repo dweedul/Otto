@@ -1,4 +1,6 @@
-﻿SetWorkingDir C:\Dropbox\Programming\Otto\scripts
+﻿; Don't try to make these dynamic, it won't work.
+; Just make sure to update them for each system that is running this.
+SetWorkingDir C:\Dropbox\Programming\Otto\scripts
 #Include      C:\Dropbox\Programming\Otto\scripts
 
 ; @IncludeFolders:
