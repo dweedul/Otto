@@ -2,6 +2,7 @@
 ## PRIVATE STUFFS ##
 ####################
 *.private.ahk
+*.bootstrap.ahk
 
 #################
 ## Eclipse
