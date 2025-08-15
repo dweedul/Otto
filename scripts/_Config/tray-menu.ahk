@@ -7,6 +7,9 @@
   TrayMenu_Add("WorkingDir")
   TrayMenu_Add("-")
 
+  TrayMenu_Add("WindowSpy")
+  TrayMenu_Add("-")
+
   TrayMenu_Add("Rebuild")
   TrayMenu_Add("Exit")
 

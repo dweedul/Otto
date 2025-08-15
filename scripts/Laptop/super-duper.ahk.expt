@@ -1,0 +1,26 @@
+﻿; My attempt at a super-duper mode as mentioned here: https://github.com/jasonrudolph/keyboard
+
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+
+#IfWinActive ahk_group SuperDuperModeTeam
+    s & d::
+    d & s::
+        superDuperMode := true
+        ToolTip, Super Duper!
+        return 
+
+    ; Exit from super-duper mode
+    s & d UP::
+    d & s UP::
+        superDuperMode := false
+        ToolTip
+        return
+
+    ; Send the prefixes when the key is released
+    s UP:: Send s
+    d UP:: Send d
+#IfWinActive

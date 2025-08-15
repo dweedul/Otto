@@ -53,8 +53,11 @@ TRAY_MENU_ACTION:
     Reload
   Else If A_ThisMenuItem = Rebuild This Script 
     Run %_BuildScript%
-  Else IF A_ThisMenuItem = Window Spy
-    Run %A_AhkPath%\AU3_Spy.exe
+  Else If A_ThisMenuItem = Window Spy
+  {
+    SplitPath A_AhkPath,, spyDir
+    Run %spyDir%\..\WindowSpy.ahk
+  }
   Else If A_ThisMenuItem = Goto Script Folder
     Run explore %A_WorkingDir%
 return
