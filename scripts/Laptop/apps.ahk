@@ -3,7 +3,6 @@
 ; Make insert a delete
 Insert::Send {Delete}
 
-
 #IfWinActive Google Chrome
   RShift & Left::Send ^+{Tab}
   RShift & Right::Send ^{Tab}

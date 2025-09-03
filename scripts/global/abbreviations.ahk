@@ -3,7 +3,7 @@
 #HotString SI ; (SendInput - faster)
 #Hotstring o ; (Omit the ending character)
 #HotString * ; (no ending character required)
-#HotString C ; (case sensitive)
+#HotString C0 ; (case insensitive)
 #HotString ? ; (no starting character required)
 
   ; Symbols
@@ -18,23 +18,23 @@
   ::(^1)::{ASC 0185} ; ¹
   ::(^2)::{ASC 0178} ; ²
   ::(^3)::{ASC 0179} ; ³
-  ::(?)::{ASC 0191} ; ¿
+  ::%?%::{ASC 0191} ; ¿
   ::%!%::{ASC 0161} ; ¡
-  ::(/)::{ASC 0247} ; ÷
-  ::(CHECK)::{U+2713} ; ✓
+  ::%/%::{ASC 0247} ; ÷
   ::%check%::{U+2714} ; ✔
-  ;:::bug:::{U+1F41B} ; 🐛
+  ::%bug%::{U+1F41B} ; 🐛
+  ::%bucket%::{U+1FAA3} ; 🪣
   ::(LTE)::{U+2264} ; ≤
   ::(GTE)::{U+2265} ; ≥
-  ::(->)::{U+2192} ; →
-  ::(RARR)::{U+2192} ; →
-  ::(<-)::{U+2190} ; ←
-  ::(LARR)::{U+2190} ; ←
-  ::(INF)::{U+221E} ; ∞
-  ::(...)::{ASC 0133} ; …
+  ::%->%::{U+2192} ; →
+  ::%rarr%::{U+2192} ; →
+  ::%<-%::{U+2190} ; ←
+  ::%LARR%::{U+2190} ; ←
+  ::%INF%::{U+221E} ; ∞
+  ::%...%::{ASC 0133} ; …
   
   ; Emoticons
-  ::(SHRUG)::¯\_(ツ)_/¯
+  ::%SHRUG%::¯\_(ツ)_/¯
   ::(TABLEFLIP)::(╯°□°)╯︵ ┻━┻
   
   ; Spanish:
@@ -45,68 +45,48 @@
   ::(o')::{ASC 0243} ; ó
   ::(u')::{ASC 0250} ; ú
 
-  ; Journal Header:
+  ; ╾──────────────── Journal entry ────────────────╼
   ; example:
-  ;╓──────────────────╖
-  ;║ mon, 09-dec-2024 ║
-  ;╙──────────────────╜
-  ;[10:30]
-  ::%jd::
-  FormatTime, currentDateStamp, , ddd',' dd-MMM-yyyy
+  ; ╾──sat, 23-aug-2025 11:52──╼
+  ::%je%::
+  FormatTime, currentDateStamp, , ddd',' dd-MMM-yyyy HH:mm
   StringLower, currentDateStamp, currentDateStamp
-  FormatTime, currentTimeStamp, , HH:mm
-  StringLower, currentTimeStamp, currentTimeStamp
   
-  journal_header := "
+  output_text := "
 (
-  
-╓──────────────────╖
-║ " currentDateStamp " ║
-╙──────────────────╜
-[" currentTimeStamp "]
+╾──" currentDateStamp "──╼
 
 )"
 
-  SendInput, %journal_header%
+  SendInput, %output_text%
   return
 
-  ; JOURNAL ENTRY: journal time stamp:
-  ::%jt::
-  FormatTime, currentTimeStamp, , HH:mm
-  StringLower, currentTimeStamp, currentTimeStamp
-  
-  journal_header := "
-(
-[" currentTimeStamp "]
-)"
-
-  SendInput, %journal_header%
-  return
-
-    ; INLINE TIMESTAMP:
+  ; ╾──────────────── INLINE TIMESTAMP ────────────────╼
   ::%ts%::
   FormatTime, currentTimeStamp, , dd-MMM-yyyy HH:mm
   StringLower, currentTimeStamp, currentTimeStamp
   
-  journal_header := "
+  output_text := "
 (
 [" currentTimeStamp "]
 )"
 
-  SendInput, %journal_header%
+  SendInput, %output_text%
   return
 
-  ; check something off and also time stamp it:
+  ; ╾──────────────── ✔ DONE ────────────────╼
+  ; check something off and also time stamp it
+  ; example: ✔ [03-sep-2025 10:08]
   ::%done%::
   FormatTime, currentTimeStamp, , dd-MMM-yyyy HH:mm
   StringLower, currentTimeStamp, currentTimeStamp
   
-  journal_header := "
+  output_text := "
 (
 [" currentTimeStamp "]
 )"
 
-  SendInput, {U+2714} %journal_header%
+  SendInput, {U+2714} %output_text%
   return
 
 #HotString ?0
